@@ -367,35 +367,7 @@ a:focus-visible,button:focus-visible{
   font-size:.8125rem;color:var(--text-2);
 }
 
-/* ── S3 · FAIXA DE CONTEXTO ───────────────────────────────────── */
-.ctx{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.ctx__i{
-  padding:16px 14px 18px;border-radius:var(--r-card);
-  background:rgba(244,238,230,.75);
-  border:1px solid var(--line-p);
-  box-shadow:var(--glow-p);
-  text-align:left;
-}
-.ctx__ic{
-  width:34px;height:34px;margin-bottom:12px;border-radius:10px;
-  display:grid;place-items:center;
-  background:rgba(176,138,98,.16);color:var(--accent-2);
-}
-.ctx__ic .ic{width:17px;height:17px}
-.ctx__t{
-  font-family:var(--mono);font-weight:500;font-size:var(--label);
-  text-transform:uppercase;letter-spacing:.12em;color:var(--gray-3);
-  line-height:1.35;
-}
-.ctx__p{margin-top:7px;font-size:.8125rem;line-height:1.55;color:var(--text-2)}
-
-/* ── S4 · CTA DE FECHAMENTO ───────────────────────────────────── */
-.close{margin-top:48px;text-align:center}
-.close__h{text-wrap:balance;font-size:1.35rem;font-weight:700;letter-spacing:-.015em;line-height:1.3;color:var(--text);font-family:var(--serif)}
-.close__p{margin:10px auto 0;max-width:34ch;font-size:.9rem;line-height:1.6;color:var(--text-2)}
-.close__b{margin-top:20px}
-
-/* ── S5 · RODAPÉ ──────────────────────────────────────────────── */
+/* ── S3 · RODAPÉ ──────────────────────────────────────────────── */
 .foot{
   margin-top:56px;padding:28px 0 40px;
   border-top:1px solid var(--line);
@@ -547,14 +519,10 @@ a:focus-visible,button:focus-visible{
   .card--imersao{padding:20px 16px 16px}
   .card--imersao .btn{margin-top:18px}
   .foot__logo{width:130px}
-  .ctx{grid-template-columns:1fr;gap:10px}
-  .ctx__i{display:flex;align-items:flex-start;gap:14px;padding:14px}
-  .ctx__ic{margin-bottom:0}
   .dock{display:block}
   /* FOTO DE FUNDO mobile — background mobile.png (opacidade 43%) */
   body::before{background-image:url("./background mobile.png")}
   body{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
-  .close{margin-top:40px}
 }
 @supports (height:100svh){
   @media (max-width:719px){.hero{min-height:68svh}}

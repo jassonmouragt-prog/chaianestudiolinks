@@ -176,60 +176,6 @@ document.documentElement.className += " js";
     </div>
 
   </section>
-
-  <!-- ══ S3 · FAIXA DE CONTEXTO ════════════════════════════════ -->
-  <section class="ctx" aria-label="O que você encontra">
-    <div class="ctx__i rv" style="--d:0">
-      <span class="ctx__ic" aria-hidden="true">
-        <svg class="ic" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="7.5"/>
-          <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
-          <circle cx="12" cy="12" r="1.4"/>
-        </svg>
-      </span>
-      <div>
-        <h2 class="ctx__t">Técnica & Precisão</h2>
-        <p class="ctx__p">Domine fundamentos e processos que tornam cada construção mais limpa, segura e profissional.</p>
-      </div>
-    </div>
-    <div class="ctx__i rv" style="--d:1">
-      <span class="ctx__ic" aria-hidden="true">
-        <svg class="ic" viewBox="0 0 24 24">
-          <path d="M7 4.5h10l4 4-9 12-9-12Z"/>
-          <path d="M3 8.5h18M12 20.5 8 8.5l4-4 4 4-4 12"/>
-        </svg>
-      </span>
-      <div>
-        <h2 class="ctx__t">Alto Padrão</h2>
-        <p class="ctx__p">Eleve acabamento, estrutura e percepção de valor dos seus atendimentos.</p>
-      </div>
-    </div>
-    <div class="ctx__i rv" style="--d:2">
-      <span class="ctx__ic" aria-hidden="true">
-        <svg class="ic" viewBox="0 0 24 24">
-          <path d="M3 20.5h18"/>
-          <path d="m5 16 5-5 3 3 6-7"/>
-          <path d="M15 7h4v4"/>
-        </svg>
-      </span>
-      <div>
-        <h2 class="ctx__t">Método & Evolução</h2>
-        <p class="ctx__p">Aprenda com direcionamento para desenvolver técnica, confiança e consistência profissional.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ S4 · CTA DE FECHAMENTO ════════════════════════════════ -->
-  <section class="close">
-    <h2 class="close__h rv" style="--d:0">Seu próximo nível começa na técnica.</h2>
-    <p class="close__p rv" style="--d:1">Aprofunde seus conhecimentos e transforme a forma como você constrói unhas.</p>
-    <a class="btn close__b rv" style="--d:2" id="ctaFim" data-link="imersao"
-       aria-label="Conhecer a imersão ao vivo — abre em nova aba">
-      <svg class="ic" aria-hidden="true"><use href="#i-spark"/></svg>
-      CONHECER A IMERSÃO AO VIVO
-      <span class="btn__go" aria-hidden="true"><svg class="ic"><use href="#i-go"/></svg></span>
-    </a>
-  </section>
 </main>
 
 <!-- ══ S5 · RODAPÉ ════════════════════════════════════════════ -->
@@ -394,19 +340,14 @@ var TOQUE   = !matchMedia('(hover:hover) and (pointer:fine)').matches;
 (function sticky(){
   var dock = document.getElementById('dock');
   var fim  = document.getElementById('sHero');
-  var cta  = document.getElementById('ctaFim');
-  if(!dock || !fim || !cta || !('IntersectionObserver' in window)) return;
+  if(!dock || !fim || !('IntersectionObserver' in window)) return;
 
-  var passouHero = false, ctaVisivel = false;
-  var atualiza = function(){ dock.classList.toggle('is-on', passouHero && !ctaVisivel); };
+  var passouHero = false;
+  var atualiza = function(){ dock.classList.toggle('is-on', passouHero); };
 
   new IntersectionObserver(function(e){
     passouHero = !e[0].isIntersecting; atualiza();
   }).observe(fim);
-
-  new IntersectionObserver(function(e){
-    ctaVisivel = e[0].isIntersecting; atualiza();
-  }, { threshold:.25 }).observe(cta);
 })();
 
 })();

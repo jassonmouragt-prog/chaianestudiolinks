@@ -163,19 +163,14 @@ var TOQUE   = !matchMedia('(hover:hover) and (pointer:fine)').matches;
 (function sticky(){
   var dock = document.getElementById('dock');
   var fim  = document.getElementById('sHero');
-  var cta  = document.getElementById('ctaFim');
-  if(!dock || !fim || !cta || !('IntersectionObserver' in window)) return;
+  if(!dock || !fim || !('IntersectionObserver' in window)) return;
 
-  var passouHero = false, ctaVisivel = false;
-  var atualiza = function(){ dock.classList.toggle('is-on', passouHero && !ctaVisivel); };
+  var passouHero = false;
+  var atualiza = function(){ dock.classList.toggle('is-on', passouHero); };
 
   new IntersectionObserver(function(e){
     passouHero = !e[0].isIntersecting; atualiza();
   }).observe(fim);
-
-  new IntersectionObserver(function(e){
-    ctaVisivel = e[0].isIntersecting; atualiza();
-  }, { threshold:.25 }).observe(cta);
 })();
 
 })();
