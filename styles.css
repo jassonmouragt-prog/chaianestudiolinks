@@ -442,12 +442,11 @@ a:focus-visible,button:focus-visible{
 @keyframes au1{from{transform:translate3d(0,0,0)}to{transform:translate3d(90px,-70px,0)}}
 @keyframes au2{from{transform:translate3d(0,0,0)}to{transform:translate3d(-80px,60px,0)}}
 
-/* M-03 · entrada em cascata */
+/* M-03 · entrada simultânea */
 .js .rv{opacity:0;transform:translateY(16px);filter:blur(8px)}
 .js .rv.in{
   opacity:1;transform:none;filter:none;
-  transition:opacity .75s var(--ease),transform .75s var(--ease),filter .75s var(--ease);
-  transition-delay:calc(var(--d,0) * 80ms);
+  transition:opacity .4s var(--ease),transform .4s var(--ease),filter .4s var(--ease);
 }
 
 /* M-04 · card lift */

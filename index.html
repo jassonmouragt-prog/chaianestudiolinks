@@ -72,6 +72,11 @@ document.documentElement.className += " js";
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Text:wght@600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<!-- Pré-carregamento das imagens-chave: todas baixam em paralelo no mesmo instante -->
+<link rel="preload" as="image" href="./logo chaiane.png">
+<link rel="preload" as="image" href="./avatar chaiane.jpeg">
+<link rel="preload" as="image" href="./background desktop.png" media="(min-width:720px)">
+<link rel="preload" as="image" href="./background mobile.png" media="(max-width:719px)">
 </head>
 <body>
 
@@ -99,11 +104,11 @@ document.documentElement.className += " js";
 <header class="hero">
   <!-- Logo da Chaiane (hero) → substituir por: chaiane-logo.png -->
   <img class="hero__mark rv" style="--d:0" src="./logo chaiane.png" width="2081" height="756"
-       decoding="async" alt="Chaiane Pasquali — logo" onerror="window.imgFallback(this,'logo')">
+       alt="Chaiane Pasquali — logo" onerror="window.imgFallback(this,'logo')">
 
   <div class="hero__content wrap">
     <div class="ava rv" style="--d:1">
-      <img src="./avatar chaiane.jpeg" width="112" height="112" decoding="async"
+      <img src="./avatar chaiane.jpeg" width="112" height="112"
            alt="Retrato de Chaiane Pasquali" onerror="window.imgFallback(this,'avatar')">
     </div>
 
@@ -230,7 +235,7 @@ document.documentElement.className += " js";
 <!-- ══ S5 · RODAPÉ ════════════════════════════════════════════ -->
 <footer class="foot wrap">
   <div class="foot__id">
-    <img class="foot__logo" src="./logo chaiane.png" width="2081" height="756" loading="lazy" alt="Chaiane Pasquali — logo"
+    <img class="foot__logo" src="./logo chaiane.png" width="2081" height="756" alt="Chaiane Pasquali — logo"
          onerror="window.imgFallback(this,'logo')">
   </div>
   <p class="foot__c">© 2026 · Todos os direitos reservados</p>
@@ -298,28 +303,15 @@ var TOQUE   = !matchMedia('(hover:hover) and (pointer:fine)').matches;
 })();
 
 /* ═══════════════════════════════════════════════════════════════
-   REVEAL · M-03
+   REVEAL · M-03 — tudo entra junto, no primeiro frame
    ═══════════════════════════════════════════════════════════════ */
 (function reveal(){
-  var noHero = document.querySelectorAll('.hero .rv');
-  var resto  = document.querySelectorAll('main .rv');
-
+  var els = document.querySelectorAll('.rv');
   requestAnimationFrame(function(){
     requestAnimationFrame(function(){
-      noHero.forEach(function(el){ el.classList.add('in'); });
+      els.forEach(function(el){ el.classList.add('in'); });
     });
   });
-
-  if(!('IntersectionObserver' in window)){
-    resto.forEach(function(el){ el.classList.add('in'); });
-    return;
-  }
-  var io = new IntersectionObserver(function(itens){
-    itens.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { rootMargin:'0px 0px -6% 0px', threshold:.14 });
-  resto.forEach(function(el){ io.observe(el); });
 })();
 
 /* ═══════════════════════════════════════════════════════════════

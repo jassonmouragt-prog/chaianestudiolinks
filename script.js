@@ -47,28 +47,15 @@ var TOQUE   = !matchMedia('(hover:hover) and (pointer:fine)').matches;
 })();
 
 /* ═══════════════════════════════════════════════════════════════
-   REVEAL · M-03
+   REVEAL · M-03 — tudo entra junto, no primeiro frame
    ═══════════════════════════════════════════════════════════════ */
 (function reveal(){
-  var noHero = document.querySelectorAll('.hero .rv');
-  var resto  = document.querySelectorAll('main .rv');
-
+  var els = document.querySelectorAll('.rv');
   requestAnimationFrame(function(){
     requestAnimationFrame(function(){
-      noHero.forEach(function(el){ el.classList.add('in'); });
+      els.forEach(function(el){ el.classList.add('in'); });
     });
   });
-
-  if(!('IntersectionObserver' in window)){
-    resto.forEach(function(el){ el.classList.add('in'); });
-    return;
-  }
-  var io = new IntersectionObserver(function(itens){
-    itens.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { rootMargin:'0px 0px -6% 0px', threshold:.14 });
-  resto.forEach(function(el){ io.observe(el); });
 })();
 
 /* ═══════════════════════════════════════════════════════════════
