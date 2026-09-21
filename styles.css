@@ -1,0 +1,592 @@
+/* ═══════════════════════════════════════════════════════════════
+   Chaiane Pasquali · Bio premium
+   Instrutora Nail Designer · Especialista em Molde F1
+   Paleta: grafite · off-white · nude · bege quente
+   ───────────────────────────────────────────────────────────────
+   FOTOS DE FUNDO (opacidade 3%):
+   · background desktop.png   — fundo desktop
+   · background mobile.png    — fundo mobile
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════
+   RESET
+   ═══════════════════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0}
+html{-webkit-text-size-adjust:100%;overflow-x:hidden}
+img,picture,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0}
+a,button,a *,button *{cursor:pointer}
+a::before,a::after,button::before,button::after{pointer-events:none}
+:where(h1,h2,h3,p){overflow-wrap:break-word}
+
+/* ═══════════════════════════════════════════════════════════════
+   TOKENS · Chaiane Studio
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --bg:        #FBF8F4;
+  --bg-2:      #F4EEE6;
+  --card:      rgba(46,37,28,.04);
+  --card-h:    rgba(46,37,28,.08);
+  --card-solid:#EFE6DC;
+  --line:      rgba(46,37,28,.12);
+  --line-p:    rgba(46,37,28,.32);
+
+  --gray:      #8A8077;
+  --gray-2:    #5D544B;
+  --gray-3:    #2E251D;
+  --accent:    #B08A62;
+  --accent-2:  #8A6844;
+  --accent-3:  #C9A87E;
+
+  --wa:        #1FAE6B;
+  --wa-deep:   #178A57;
+  --live:      #E07A5F;
+
+  --grad:      linear-gradient(135deg,#FBF8F4 0%,#F4EEE6 55%,#E9DFD3 100%);
+  --grad-alt:  linear-gradient(135deg,#E9DFD3 0%,#DCCDBB 100%);
+  --grad-cta:  linear-gradient(135deg,#2A221B 0%,#16110D 100%);
+  --grad-cream:linear-gradient(135deg,#F7F0E6 0%,#EADBC8 100%);
+
+  --text:      #2B241D;
+  --text-2:    #4D443B;
+  --text-3:    #8A8077;
+
+  --glow-p:    0 8px 32px rgba(46,37,28,.10);
+  --glow-cta:  0 14px 40px rgba(46,37,28,.30);
+  --glow-warm: 0 18px 54px rgba(44,35,26,.35);
+  --glow-rad:  radial-gradient(circle, rgba(176,138,98,.18) 0%, rgba(176,138,98,0) 70%);
+
+  --sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --serif: 'Crimson Text', Georgia, 'Times New Roman', serif;
+  --mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --name:  clamp(1.875rem, 5vw, 2.5rem);
+  --h2:    clamp(1.25rem, 3vw, 1.6rem);
+  --link:  1.0625rem;
+  --body:  .9375rem;
+  --label: .6875rem;
+
+  --col:   560px;
+  --gut:   20px;
+  --r-tile:12px; --r-card:16px; --r-hero:18px;
+
+  --ease:  cubic-bezier(.16,1,.3,1);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BASE
+   ═══════════════════════════════════════════════════════════════ */
+body{
+  position:relative;
+  min-height:100vh;
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.6;
+  overflow-x:clip;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  color:var(--text);
+
+  /* FOTO DE FUNDO desktop — background desktop.png (opacidade 43%) */
+  background-color:#FFFFFF;
+}
+/* FOTO DE FUNDO · desktop, levemente visível (43%) */
+body::before{
+  content:"";position:absolute;inset:0;z-index:0;
+  background-image:url("./background desktop.png");
+  background-size:cover;
+  background-position:center top;
+  background-repeat:no-repeat;
+  opacity:.43;
+  pointer-events:none;
+}
+.wrap{width:100%;max-width:var(--col);margin-inline:auto;padding-inline:var(--gut)}
+.mono{font-family:var(--mono);font-weight:500}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+a:focus-visible,button:focus-visible{
+  outline:2px solid var(--gray-3);
+  outline-offset:3px;
+  border-radius:var(--r-card);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   COMPONENTES
+   ═══════════════════════════════════════════════════════════════ */
+
+/* — badge / pill — */
+.badge{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:6px 12px;border-radius:999px;
+  background:rgba(46,37,28,.06);
+  border:1px solid rgba(46,37,28,.16);
+  color:var(--gray-3);
+  font-family:var(--mono);font-weight:500;
+  font-size:var(--label);text-transform:uppercase;letter-spacing:.14em;
+  line-height:1;
+  text-align:center;
+  max-width:100%;
+}
+.badge i{width:5px;height:5px;border-radius:999px;background:currentColor;flex:none}
+
+/* — pills de ação dentro dos cards — */
+.pill{
+  display:inline-flex;align-items:center;gap:6px;flex:none;
+  padding:6px 11px;border-radius:999px;
+  font-family:var(--mono);font-weight:500;
+  font-size:.625rem;text-transform:uppercase;letter-spacing:.08em;line-height:1;
+}
+.pill--wa{
+  background:rgba(31,174,107,.10);border:1px solid rgba(31,174,107,.30);
+  color:var(--wa-deep);
+}
+.pill--breve{
+  background:rgba(46,37,28,.07);border:1px solid rgba(46,37,28,.18);
+  color:var(--text-3);
+}
+.pill__ic{width:12px;height:12px}
+
+/* — ícones — */
+.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;
+    stroke-linecap:round;stroke-linejoin:round}
+.ic--fill{fill:currentColor;stroke:none}
+.ic--marca{width:24px;height:24px}
+
+/* — tile de ícone — */
+.tile{
+  width:40px;height:40px;flex:none;
+  display:grid;place-items:center;
+  border-radius:var(--r-tile);
+  background:rgba(46,37,28,.06);
+  color:var(--gray-3);
+  transition:transform .2s ease-out;
+}
+
+/* — CARD DE LINK (padrão) — */
+.card{
+  position:relative;
+  display:flex;align-items:center;gap:14px;
+  min-height:68px;padding:14px 16px;
+  border-radius:var(--r-card);
+  background:var(--card);
+  border:1px solid var(--line);
+  box-shadow:0 0 0 1px rgba(176,138,98,.15), 0 10px 30px -14px rgba(46,37,28,.22);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  transition:transform .2s ease-out, border-color .2s ease-out,
+             box-shadow .2s ease-out, background-color .2s ease-out;
+}
+.card__txt{min-width:0;flex:1}
+.card__t{
+  display:flex;align-items:center;gap:8px;
+  font-size:var(--link);font-weight:600;line-height:1.3;letter-spacing:-.01em;
+  color:var(--text);
+}
+.card__s{
+  display:block;margin-top:4px;
+  font-family:var(--mono);font-weight:500;
+  font-size:var(--label);color:var(--text-3);
+  letter-spacing:.02em;line-height:1.5;
+}
+.card__go{color:var(--text-3);flex:none;transition:transform .2s ease-out,color .2s ease-out}
+.card__go .ic{width:18px;height:18px}
+
+/* ── CARD 1 · IMERSÃO AO VIVO · CTA principal ──────────────────── */
+.card--imersao{
+  flex-direction:column;align-items:stretch;gap:0;
+  padding:24px 22px 22px;
+  min-height:0;
+  border-radius:20px;
+  background:var(--grad-cta);
+  border:1px solid rgba(201,168,126,.38);
+  box-shadow:var(--glow-warm), 0 0 0 1px rgba(201,168,126,.22), inset 0 1px 0 rgba(255,255,255,.07);
+  color:#F7F1E9;
+  -webkit-backdrop-filter:none;backdrop-filter:none;
+}
+.card--imersao::before{ /* luz interna quente e sutil */
+  content:"";position:absolute;inset:0;border-radius:inherit;
+  background:
+    radial-gradient(70% 80% at 10% -15%, rgba(201,168,126,.22), transparent 55%),
+    radial-gradient(60% 70% at 105% 115%, rgba(176,138,98,.20), transparent 60%);
+  pointer-events:none;
+}
+.card--imersao > *{position:relative}
+.card--imersao .card__t{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(1.35rem,5vw,1.6rem);
+  letter-spacing:.01em;line-height:1.1;
+  color:#FBF8F4;
+}
+.card--imersao .card__s{
+  margin-top:8px;max-width:44ch;
+  color:rgba(247,241,233,.82);
+  font-size:.75rem;line-height:1.65;
+}
+.imersao__top{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:18px;
+}
+.badge--live{
+  background:rgba(201,168,126,.14);border-color:rgba(201,168,126,.42);
+  color:#E8C8A0;
+}
+.tile--spark{width:38px;height:38px;background:rgba(201,168,126,.14);color:#E8C8A0}
+.card--imersao .btn{margin-top:22px}
+.card--imersao .btn{
+  background:var(--grad-cream);
+  border:1px solid rgba(255,255,255,.55);
+  color:#2E251D;
+  box-shadow:0 12px 30px rgba(0,0,0,.30), inset 0 1px 0 rgba(255,255,255,.6);
+}
+
+/* ── CARD 2 · WHATSAPP ─────────────────────────────────────────── */
+.card--whats .tile{background:rgba(31,174,107,.12);color:var(--wa-deep)}
+
+/* ── CARD 3 · LAPIDANDO NAILS · EM BREVE (NÃO clicável) ────────── */
+.card--breve{
+  opacity:.78;
+  pointer-events:none;
+  border:1px dashed var(--line-p);
+  background:rgba(46,37,28,.025);
+  filter:saturate(.85);
+}
+.card--breve .tile{background:rgba(46,37,28,.07);color:var(--text-3)}
+.card--breve .card__t{color:var(--text-2)}
+.card--breve .card__s{color:var(--text-3)}
+
+/* — BOTÃO CTA — */
+.btn{
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;min-height:58px;padding:0 20px;
+  border-radius:var(--r-hero);
+  background:var(--grad-cta);
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:var(--glow-cta);
+  color:#fff;font-size:var(--link);font-weight:700;letter-spacing:-.01em;
+  text-transform:uppercase;
+  transition:transform .2s ease-out, box-shadow .2s ease-out;
+}
+.btn .ic{width:18px;height:18px}
+.btn .ic--marca{width:22px;height:22px}
+.btn__go{display:inline-flex;transition:transform .2s ease-out}
+.btn::after{
+  content:"";position:absolute;top:-60%;left:-70%;
+  width:42%;height:220%;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.10),transparent);
+  animation:sweep 4.5s var(--ease) infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SEÇÕES
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── S1 · HERO ────────────────────────────────────────────────── */
+.hero{
+  position:relative;isolation:isolate;
+  min-height:72vh;
+  display:flex;flex-direction:column;justify-content:flex-end;align-items:center;
+  text-align:center;
+  padding-top:104px;
+  background:none;
+}
+.hero__mark{
+  position:absolute;top:32px;left:0;right:0;margin-inline:auto;z-index:3;
+  width:200px;height:auto;
+  filter:drop-shadow(0 4px 18px rgba(176,138,98,.30));
+}
+.hero__content{display:flex;flex-direction:column;align-items:center;padding-bottom:4px}
+
+/* avatar + anel girando (M-06) */
+.ava{position:relative;width:112px;height:112px;margin-bottom:42px}
+.ava::before{
+  content:"";position:absolute;inset:-30px;border-radius:999px;z-index:2;
+  padding:4px;
+  background:conic-gradient(from 0deg,#C9A87E,#8A6844,#3A3129,#8A6844,#C9A87E);
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+          mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask-composite:exclude;
+  animation:spin 12s linear infinite;
+}
+.ava::after{
+  content:"";position:absolute;inset:-14px;border-radius:999px;
+  background:var(--glow-rad);z-index:-1;
+}
+.ava img{
+  position:relative;width:112px;height:112px;
+  border-radius:999px;
+  object-fit:cover;object-position:50% 8%;background:var(--bg-2);
+  transform:scale(1.5);
+}
+
+.name{
+  margin-top:14px;text-wrap:balance;
+  font-size:var(--name);font-weight:700;line-height:1.05;letter-spacing:-.01em;
+  color:var(--text);
+  font-family:var(--serif);
+}
+.handle{
+  margin-top:8px;padding:4px 8px;border-radius:8px;
+  font-family:var(--mono);font-weight:500;font-size:.8125rem;
+  color:var(--text-2);letter-spacing:.01em;
+  transition:color .18s ease-out,background-color .18s ease-out;
+}
+.handle b{color:var(--gray-3);font-weight:500}
+.handle:hover{color:var(--text);background:rgba(46,37,28,.05)}
+.handle[data-copied="1"]{color:var(--accent-2)}
+.bio{
+  margin-top:12px;max-width:36ch;text-wrap:balance;
+  font-size:1.0625rem;line-height:1.6;color:var(--text-2);
+  font-weight:400;
+}
+
+/* sentinela do sticky (M-10) e fade curto do handle (M-09) */
+#sHero{display:block;width:100%;height:1px}
+#handleTxt{display:inline-block;transition:opacity .13s ease-out}
+
+/* ── ASSINATURA · a linha central ────────────────────────────── */
+.stack{position:relative;padding-top:34px}
+.stack::before{
+  content:"";position:absolute;z-index:0;
+  left:50%;top:0;bottom:var(--spine-end,96px);width:1px;
+  transform:translateX(-.5px);
+  background:repeating-linear-gradient(180deg,
+    rgba(176,138,98,.28) 0 5px, transparent 5px 15px);
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 7%,#000 90%,transparent);
+          mask-image:linear-gradient(180deg,transparent,#000 7%,#000 90%,transparent);
+  pointer-events:none;
+}
+.stack > *{position:relative;z-index:1}
+
+/* ── S2 · VITRINE DE LINKS ────────────────────────────────────── */
+.links{display:flex;flex-direction:column;gap:14px}
+.noscript{
+  padding:12px 16px;border-radius:var(--r-card);
+  background:rgba(176,138,98,.12);border:1px solid rgba(176,138,98,.36);
+  font-size:.8125rem;color:var(--text-2);
+}
+
+/* ── S3 · FAIXA DE CONTEXTO ───────────────────────────────────── */
+.ctx{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ctx__i{
+  padding:16px 14px 18px;border-radius:var(--r-card);
+  background:rgba(244,238,230,.75);
+  border:1px solid var(--line-p);
+  box-shadow:var(--glow-p);
+  text-align:left;
+}
+.ctx__ic{
+  width:34px;height:34px;margin-bottom:12px;border-radius:10px;
+  display:grid;place-items:center;
+  background:rgba(176,138,98,.16);color:var(--accent-2);
+}
+.ctx__ic .ic{width:17px;height:17px}
+.ctx__t{
+  font-family:var(--mono);font-weight:500;font-size:var(--label);
+  text-transform:uppercase;letter-spacing:.12em;color:var(--gray-3);
+  line-height:1.35;
+}
+.ctx__p{margin-top:7px;font-size:.8125rem;line-height:1.55;color:var(--text-2)}
+
+/* ── S4 · CTA DE FECHAMENTO ───────────────────────────────────── */
+.close{margin-top:48px;text-align:center}
+.close__h{text-wrap:balance;font-size:1.35rem;font-weight:700;letter-spacing:-.015em;line-height:1.3;color:var(--text);font-family:var(--serif)}
+.close__p{margin:10px auto 0;max-width:34ch;font-size:.9rem;line-height:1.6;color:var(--text-2)}
+.close__b{margin-top:20px}
+
+/* ── S5 · RODAPÉ ──────────────────────────────────────────────── */
+.foot{
+  margin-top:56px;padding:28px 0 40px;
+  border-top:1px solid var(--line);
+  text-align:center;
+}
+.foot__id{display:flex;align-items:center;justify-content:center;gap:9px}
+.foot__logo{width:150px;height:auto;opacity:.92}
+.foot__id span{font-size:.875rem;font-weight:600;letter-spacing:-.01em}
+.foot__c{margin-top:10px;font-size:.75rem;color:var(--text-3)}
+.foot__r{margin-top:14px;font-size:.75rem;line-height:1.55;color:var(--text-3);max-width:44ch;margin-inline:auto}
+
+/* ── S6 · BARRA FIXA (mobile) ─────────────────────────────────── */
+.dock{
+  position:fixed;left:0;right:0;bottom:0;z-index:40;
+  display:none;
+  padding:12px var(--gut) calc(12px + env(safe-area-inset-bottom));
+  background:rgba(255,255,255,.92);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-top:1px solid var(--line);
+  transform:translateY(100%);
+  transition:transform .32s var(--ease);
+}
+.dock.is-on{transform:translateY(0)}
+.dock .btn{min-height:52px}
+
+/* ═══════════════════════════════════════════════════════════════
+   MOTION
+   ═══════════════════════════════════════════════════════════════ */
+
+/* M-01 · aurora drift (sutil, reservado) */
+.aurora{display:none}
+.aurora i{position:absolute;display:block;border-radius:999px;
+  filter:blur(80px);opacity:.35;will-change:transform}
+.aurora i:nth-child(1){
+  width:600px;height:600px;left:-16%;top:22%;
+  background:radial-gradient(circle,rgba(176,138,98,.18) 0%,rgba(176,138,98,0) 68%);
+  animation:au1 28s ease-in-out infinite alternate;
+}
+.aurora i:nth-child(2){
+  width:420px;height:420px;right:-14%;top:58%;
+  background:radial-gradient(circle,rgba(138,104,68,.14) 0%,rgba(138,104,68,0) 68%);
+  animation:au2 37s ease-in-out infinite alternate;
+}
+@keyframes au1{from{transform:translate3d(0,0,0)}to{transform:translate3d(90px,-70px,0)}}
+@keyframes au2{from{transform:translate3d(0,0,0)}to{transform:translate3d(-80px,60px,0)}}
+
+/* M-03 · entrada em cascata */
+.js .rv{opacity:0;transform:translateY(16px);filter:blur(8px)}
+.js .rv.in{
+  opacity:1;transform:none;filter:none;
+  transition:opacity .75s var(--ease),transform .75s var(--ease),filter .75s var(--ease);
+  transition-delay:calc(var(--d,0) * 80ms);
+}
+
+/* M-04 · card lift */
+@media (hover:hover){
+  .card:not(.card--imersao):not(.card--breve):hover{
+    background:var(--card-h);
+    border-color:rgba(176,138,98,.45);
+    box-shadow:0 0 0 1px rgba(176,138,98,.28), 0 18px 44px -16px rgba(176,138,98,.38);
+  }
+  .card:hover .tile{transform:scale(1.06)}
+  .card:hover .card__go{transform:translateX(4px)}
+  .card:not(.card--imersao):not(.card--breve):hover .card__go{color:var(--gray-3)}
+  .card--imersao:hover{
+    border-color:rgba(201,168,126,.7);
+    box-shadow:0 26px 64px rgba(44,35,26,.42), 0 0 0 1px rgba(201,168,126,.4),
+               inset 0 1px 0 rgba(255,255,255,.07);
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:var(--glow-warm)}
+  .btn:hover .btn__go{transform:translateX(4px)}
+}
+.card:not(.card--imersao):not(.card--breve):focus-visible{
+  background:var(--card-h);
+  border-color:rgba(176,138,98,.45);
+  box-shadow:0 0 0 1px rgba(176,138,98,.28), 0 18px 44px -16px rgba(176,138,98,.38);
+}
+.card--imersao:focus-visible{
+  border-color:rgba(201,168,126,.7);
+  box-shadow:0 26px 64px rgba(44,35,26,.42), 0 0 0 1px rgba(201,168,126,.4),
+             inset 0 1px 0 rgba(255,255,255,.07);
+}
+.card:active,.btn:active{transform:translateY(-3px);transition-duration:.12s}
+.btn:active{transform:translateY(-1px) scale(.995)}
+
+/* M-11 · float em loop suave dos cards + glow de borda */
+@keyframes floatCards{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+}
+.links .card{animation:floatCards 6s ease-in-out infinite;animation-delay:calc(var(--d,0) * .9s)}
+.links .card--imersao{animation-duration:7.5s;animation-delay:calc(var(--d,0) * .9s)}
+
+/* M-05 · shine sweep */
+@keyframes sweep{
+  0%  {transform:rotate(16deg) translateX(0);opacity:0}
+  5%  {opacity:1}
+  30% {transform:rotate(16deg) translateX(430%);opacity:1}
+  35% {transform:rotate(16deg) translateX(430%);opacity:0}
+  100%{transform:rotate(16deg) translateX(430%);opacity:0}
+}
+
+/* M-06 · anel do avatar */
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* M-07 · cursor spotlight (inativo) */
+.spot{display:none}
+.spot.is-on{opacity:1}
+
+/* M-08 · "ao vivo" pulsante */
+@keyframes pulse{
+  0%  {box-shadow:0 0 0 0 rgba(224,122,95,.60)}
+  70% {box-shadow:0 0 0 8px rgba(224,122,95,0)}
+  100%{box-shadow:0 0 0 0 rgba(224,122,95,0)}
+}
+.live{
+  position:relative;width:6px;height:6px;flex:none;border-radius:999px;
+  background:var(--live);display:inline-block;
+}
+.live::after{content:"";position:absolute;inset:0;border-radius:999px;animation:pulse 2.2s ease-out infinite}
+
+/* camadas */
+.hero,main,.foot{position:relative;z-index:2}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVO
+   ═══════════════════════════════════════════════════════════════ */
+@supports (height:100svh){.hero{min-height:72svh}}
+
+@media (max-width:1023px){
+  .hero{min-height:64vh;padding-top:92px}
+}
+@supports (height:100svh){
+  @media (max-width:1023px){.hero{min-height:64svh}}
+}
+
+@media (max-width:719px){
+  .hero{min-height:68vh;padding-top:112px}
+  .ava{width:92px;height:92px;margin-bottom:36px}
+  .ava img{width:92px;height:92px}
+  .hero__mark{width:128px;height:auto;top:14px;z-index:3}
+  .badge{white-space:nowrap;font-size:.4375rem;line-height:1;padding:6px 8px;letter-spacing:.05em;gap:5px}
+  .card{min-height:64px;gap:12px;padding:13px 14px}
+  .card__t{font-size:.95rem;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .card__s{font-size:.625rem;line-height:1.45;margin-top:3px}
+  .card:not(.card--imersao) .card__s{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .pill{font-size:.5625rem;padding:5px 9px}
+  .btn{min-height:50px;font-size:.85rem;padding:0 14px}
+  .dock .btn{min-height:46px;font-size:.8rem}
+  .card--imersao{padding:20px 16px 16px}
+  .card--imersao .btn{margin-top:18px}
+  .foot__logo{width:130px}
+  .ctx{grid-template-columns:1fr;gap:10px}
+  .ctx__i{display:flex;align-items:flex-start;gap:14px;padding:14px}
+  .ctx__ic{margin-bottom:0}
+  .dock{display:block}
+  /* FOTO DE FUNDO mobile — background mobile.png (opacidade 43%) */
+  body::before{background-image:url("./background mobile.png")}
+  body{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+  .close{margin-top:40px}
+}
+@supports (height:100svh){
+  @media (max-width:719px){.hero{min-height:68svh}}
+}
+
+@media (max-width:379px){
+  :root{--gut:16px}
+  .card{min-height:64px;gap:12px;padding:12px 13px}
+  .card--imersao{min-height:0;padding:20px 15px 16px}
+  .card:not(.card--imersao) .card__s{display:none}
+  .card--imersao .card__s{display:block}
+  .tile{width:36px;height:36px}
+  .pill--wa{display:none}
+  .pill--breve{padding:5px 9px;font-size:.5625rem}
+  .btn{font-size:.9rem;padding:0 14px}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   REDUCED-MOTION
+   ═══════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important;
+  }
+  .aurora i{animation:none;transform:none}
+  .ava::before{animation:none}
+  .btn::after{display:none}
+  .spot{display:none}
+  .live::after{animation:none;box-shadow:0 0 0 3px rgba(224,122,95,.25)}
+  .links .card{animation:none}
+  .js .rv{opacity:1;transform:none;filter:none}
+  .dock{transition:none}
+}
