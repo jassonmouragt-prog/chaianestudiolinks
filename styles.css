@@ -98,7 +98,7 @@ body::before{
   background-size:cover;
   background-position:center top;
   background-repeat:no-repeat;
-  opacity:.3;
+  opacity:.15;
   pointer-events:none;
 }
 .wrap{width:100%;max-width:var(--col);margin-inline:auto;padding-inline:var(--gut)}
