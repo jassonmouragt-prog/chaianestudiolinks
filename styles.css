@@ -246,6 +246,7 @@ a:focus-visible,button:focus-visible{
 .card--breve{
   opacity:.78;
   pointer-events:none;
+  cursor:not-allowed;
   border:1px dashed var(--line-p);
   background:rgba(46,37,28,.025);
   filter:saturate(.85);
