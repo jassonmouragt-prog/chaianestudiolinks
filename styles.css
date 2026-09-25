@@ -222,6 +222,19 @@ a:focus-visible,button:focus-visible{
   color:rgba(247,241,233,.82);
   font-size:.75rem;line-height:1.65;
 }
+.card--imersao .card__date{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  margin-top:10px;
+  font-family:var(--mono);font-weight:500;
+  font-size:.78rem;letter-spacing:.04em;
+  color:#E8C8A0;
+}
+.card--imersao .card__date span{
+  background:rgba(201,168,126,.16);
+  border:1px solid rgba(201,168,126,.45);
+  border-radius:20px;
+  padding:3px 10px;
+}
 .imersao__top{
   display:flex;align-items:center;justify-content:space-between;
   margin-bottom:18px;
